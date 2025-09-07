@@ -17,6 +17,7 @@
     "@mui/x-data-grid-premium": "^8.11.1",
     "@mui/x-data-grid-pro": "^8.11.1",
     "@nivo/bar": "^0.93.0",
+    "@nivo/core": "^0.99.0",
     "@nivo/geo": "^0.93.0",
     "@nivo/line": "^0.93.0",
     "@nivo/pie": "^0.93.0",
