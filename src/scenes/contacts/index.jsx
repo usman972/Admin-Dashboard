@@ -1,18 +1,8 @@
-import { Box, useTheme } from "@mui/material";
-import {
-  DataGrid,
-
-} from "@mui/x-data-grid";
+import { Box, useTheme, Button } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
-
-
-
-
- 
-
-
 
 const Contacts = () => {
   const theme = useTheme();
@@ -41,25 +31,56 @@ const Contacts = () => {
     { field: "zipCode", headerName: "Zip Code", flex: 1 },
   ];
 
+  // CSV Export Function
+  const downloadCSV = () => {
+    if (!mockDataContacts || mockDataContacts.length === 0) return;
+
+    const headers = Object.keys(mockDataContacts[0]).join(",");
+    const rows = mockDataContacts.map((row) =>
+      Object.values(row)
+        .map((value) => `"${value}"`)
+        .join(",")
+    );
+
+    const csvContent = [headers, ...rows].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "contacts_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
+      <Header title="CONTACTS" subtitle="List of Contacts for Future Reference" />
+
+      {/* Export Button */}
+      <Box display="flex" justifyContent="flex-end" mb={2}>
+        <Button
+          onClick={downloadCSV}
+          variant="contained"
+          sx={{
+            backgroundColor: colors.greenAccent[600],
+            color: colors.grey[100],
+            "&:hover": {
+              backgroundColor: colors.greenAccent[700],
+            },
+          }}
+        >
+          Export CSV
+        </Button>
+      </Box>
+
       <Box
         m="40px 0 0 0"
         height="75vh"
         sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
+          "& .MuiDataGrid-root": { border: "none" },
+          "& .MuiDataGrid-cell": { borderBottom: "none" },
+          "& .name-column--cell": { color: colors.greenAccent[300] },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],
             borderBottom: "none",
@@ -79,13 +100,7 @@ const Contacts = () => {
           },
         }}
       >
-        <DataGrid
-          rows={mockDataContacts}
-          columns={columns}
-         
-         
-          
-        />
+        <DataGrid rows={mockDataContacts} columns={columns} />
       </Box>
     </Box>
   );
