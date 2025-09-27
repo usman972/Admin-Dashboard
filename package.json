@@ -28,8 +28,8 @@
     "d3-scale": "^4.0.2",
     "file-saver": "^2.0.5",
     "formik": "^2.4.6",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.30.0",
     "react-scripts": "5.0.1",
@@ -39,13 +39,13 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    
     "start": "react-scripts start",
     "build": "CI=false npm install --legacy-peer-deps && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    
     "extends": [
       "react-app",
       "react-app/jest"
