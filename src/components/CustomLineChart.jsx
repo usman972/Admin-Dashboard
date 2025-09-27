@@ -13,13 +13,13 @@ import { mockLineData } from "../data/mockData";
 
 const CustomLineChart = () => {
   return (
-    <div style={{ width: "100%", height: 400 }}>
+    <div style={{ width: "100%", height: "250px" }}>
       <ResponsiveContainer>
         <LineChart
           data={mockLineData}
           margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />

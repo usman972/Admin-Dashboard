@@ -51,7 +51,7 @@ const CustomBarChart = () => {
       }}
     >
       {/* Chart */}
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: "100%", height: "250px" }}>
         <ResponsiveContainer>
           <BarChart
             data={mockBarData}
